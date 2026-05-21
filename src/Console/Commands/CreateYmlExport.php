@@ -2,6 +2,8 @@
 
 namespace GIS\CatalogExportYml\Console\Commands;
 
+use GIS\CatalogExportYml\Facades\YmlActions;
+use GIS\CatalogExportYml\Helpers\YMLDocument;
 use Illuminate\Console\Command;
 
 class CreateYmlExport extends Command
@@ -11,7 +13,7 @@ class CreateYmlExport extends Command
      *
      * @var string
      */
-    protected $signature = 'generate:catalog-yml';
+    protected $signature = 'generate:catalog-yml {--fileName=}';
 
     /**
      * The console command description.
@@ -25,6 +27,10 @@ class CreateYmlExport extends Command
      */
     public function handle(): void
     {
-        $this->info("Hello there");
+        $fileName = null;
+        if ($this->hasOption('fileName')) {
+            $fileName = $this->option('fileName');
+        }
+        YmlActions::generateNewFile($fileName);
     }
 }
