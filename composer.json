@@ -1,0 +1,27 @@
+{
+    "name": "4geo35/catalog-export-yml",
+    "description": "Generate xml file for Yandex",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vladimir",
+            "email": "aweram-team@yandex.ru"
+        }
+    ],
+    "require": {
+        "4geo35/user-management": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "GIS\\CatalogExportYml\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "GIS\\CatalogExportYml\\CatalogExportYmlServiceProvider"
+            ]
+        }
+    }
+}
