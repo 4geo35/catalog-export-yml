@@ -1,6 +1,16 @@
 <?php
 
 return [
+    // File settings
+    "fileName" => env("CATALOG_EXPORT_YML_FILE_NAME", "yandex-products.yml"),
+    "fileFolder" => env("CATALOG_EXPORT_YML_FILE_FOLDER", "yml"),
+
+    // Route settings
+    "ymlCacheKey" => "catalog-yml-export",
+    "ymlCacheLifetime" => env("CATALOG_EXPORT_YML_CACHE_LIFETIME", 86400),
+    "ymlPrefix" => env("CATALOG_EXPORT_YML_PREFIX", "catalog-export"),
+
+    // Xml settings
     "encoding" => "UTF-8",
 
     "shopName" => env("CATALOG_EXPORT_YML_SHOP_NAME", env("APP_NAME")),
@@ -10,9 +20,6 @@ return [
     "currencyId" => env("CATALOG_EXPORT_YML_CURRENCY_ID", "RUR"),
     "currencyRate" => env("CATALOG_EXPORT_YML_CURRENCY_RATE", 1),
 
-    "fileName" => env("CATALOG_EXPORT_YML_FILE_NAME", "yandex-products.yml"),
-    "fileFolder" => env("CATALOG_EXPORT_YML_FILE_FOLDER", "yml"),
-
     "productImageTemplate" => env("CATALOG_EXPORT_YML_PRODUCT_IMAGE_TEMPLATE", "original"),
     "productDescriptionField" => env("CATALOG_EXPORT_YML_PRODUCT_DESCRIPTION_FIELD", "description"),
     "productDescriptionStripTags" => env("CATALOG_EXPORT_YML_PRODUCT_DESCRIPTION_STRIP_TAGS", false),
@@ -20,4 +27,7 @@ return [
 
     // Manager
     "customYmlActionsManager" => null,
+
+    // Controllers
+    "customExportCatalogController" => null,
 ];

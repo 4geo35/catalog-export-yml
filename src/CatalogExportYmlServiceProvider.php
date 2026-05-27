@@ -21,6 +21,8 @@ class CatalogExportYmlServiceProvider extends ServiceProvider
                 CreateYmlExport::class,
             ]);
         }
+
+        $this->loadRoutesFrom(__DIR__ . '/routes/export.php');
     }
 
     protected function initFacades(): void

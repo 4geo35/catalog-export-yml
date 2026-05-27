@@ -7,6 +7,8 @@ use GIS\CategoryProduct\Interfaces\CategoryInterface;
 use GIS\CategoryProduct\Interfaces\ProductInterface;
 use GIS\CategoryProduct\Models\Category;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use SimpleXMLElement;
 
@@ -27,12 +29,24 @@ class YmlActionsManager
         }
 
         $this->fillDocument();
+        $xmlStr = $this->catalog->asXML();
+        if (empty($xmlStr)) {
+            Log::error("Can't create XML string in YmlActionsManager::generateNewFile");
+            return;
+        }
+
+        Storage::disk("public")->put($fileFolder . "/$fileName", $xmlStr);
     }
 
     public function getXMLContent(): string|null
     {
-        $this->fillDocument();
-        return $this->catalog->asXML();
+        $key = config("catalog-export-yml.ymlCacheKey");
+        $lifetime = config("catalog-export-yml.ymlCacheLifetime");
+
+        return Cache::remember($key, $lifetime, function () {
+            $this->fillDocument();
+            return $this->catalog->asXML();
+        });
     }
 
     protected function fillDocument(): void
