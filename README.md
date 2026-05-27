@@ -1,6 +1,6 @@
 ### Usage
 
-    generate:catalog-yml {--fileName=}
+    php artisan generate:catalog-yml {--fileName=}
 
 Поместить команду в расписание, будет генерировать файл в `public`, название папки и файла можно изменить в конфиге.
 
