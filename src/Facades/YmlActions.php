@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static void generateNewFile(string $fileName = null)
+ * @method static string|null getXMLContent()
  *
  * @see YmlActionsManager
  */

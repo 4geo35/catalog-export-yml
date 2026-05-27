@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "4geo35/category-product": "@dev"
+        "4geo35/product-variation": "@dev"
     },
     "autoload": {
         "psr-4": {
